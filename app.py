@@ -4,7 +4,8 @@ import pandas as pd
 from PIL import Image
 
 # Load the model
-rf_model = pickle.load(open('rf_model.pkl', 'rb'))
+knn_reg = pickle.load(open('knn_reg.pkl', 'rb'))
+
 
 # Set the title with Markdown for font size and color
 st.markdown("<h1 style='font-size: 40px; color: blue;'>Fuel Consumption Predictor</h1>", unsafe_allow_html=True)
@@ -32,7 +33,7 @@ user_data = user_report()
 st.header('User Input')
 st.write(user_data)
 
-consume = rf_model.predict(user_data[selected_features].values)
+consume = knn_reg.predict(user_data[selected_features].values)
 rounded_consume = round(consume[0])
 st.header('User Input')
 st.write(user_data)
